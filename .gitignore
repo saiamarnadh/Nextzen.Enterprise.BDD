@@ -4,3 +4,5 @@
 
 /.vs/Nextzen.Enterprise.BDD/FileContentIndex
 /.vs/Nextzen.Enterprise.BDD/v17
+/Nextzen.Enterprise.BDD/obj/Debug/net6.0/Nextzen.Enterprise.BDD.csproj.AssemblyReference.cache
+*.feature.cs
