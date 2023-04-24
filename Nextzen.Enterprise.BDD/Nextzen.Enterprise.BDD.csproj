@@ -6,6 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>Nextzen</Authors>
+		<Company>Nextzen</Company>
+		<Description>A collection of Nuget Packages to enable automated validations on web, Desktop, Mobile and API applications</Description>
+		<EnableNETAnalyzers>False</EnableNETAnalyzers>
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
