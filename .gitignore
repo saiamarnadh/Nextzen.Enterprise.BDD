@@ -7,4 +7,6 @@
 /Nextzen.Enterprise.BDD/obj/Debug/net6.0/Nextzen.Enterprise.BDD.csproj.AssemblyReference.cache
 *.feature.cs
 *.nupkg
+/Nextzen.Enterprise.BDD/obj/*
 /Nextzen.Enterprise.BDD/bin/Debug/net6.0
+/.vs
