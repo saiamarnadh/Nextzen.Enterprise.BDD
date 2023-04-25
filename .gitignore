@@ -4,9 +4,13 @@
 
 /.vs/Nextzen.Enterprise.BDD/FileContentIndex
 /.vs/Nextzen.Enterprise.BDD/v17
-/Nextzen.Enterprise.BDD/obj/Debug/net6.0/Nextzen.Enterprise.BDD.csproj.AssemblyReference.cache
+/Nextzen.Enterprise.BDD/obj/*
 *.feature.cs
 *.nupkg
-/Nextzen.Enterprise.BDD/obj/*
-/Nextzen.Enterprise.BDD/bin/Debug/net6.0
+/Nextzen.Enterprise.BDD/bin/*
 /.vs
+*.suo
+*.user
+_ReSharper.*
+bin
+packages
