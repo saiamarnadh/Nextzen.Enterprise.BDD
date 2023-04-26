@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	
 	<Target Name="NugetPackAutoVersioning" AfterTargets="Build">
-		<Exec Command="dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))"/>
+		<Exec Command="dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))" />
 	</Target>
 	
 	<PropertyGroup>
@@ -22,18 +22,28 @@
 		<Description>A collection of Nuget Packages to enable automated validations on web, Desktop, Mobile and API applications</Description>
 		<EnableNETAnalyzers>False</EnableNETAnalyzers>
 		<DebugType>full</DebugType>
+		<PackageProjectUrl>https://github.com/saiamarnadh/Nextzen.Enterprise.BDD</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Drivers\**" />
 		<Compile Remove="Support\**" />
+		<EmbeddedResource Remove="Drivers\**" />
 		<EmbeddedResource Remove="Support\**" />
+		<None Remove="Drivers\**" />
 		<None Remove="Support\**" />
+		<SpecFlowFeatureFiles Remove="Drivers\**" />
 		<SpecFlowFeatureFiles Remove="Support\**" />
+		<SpecFlowObsoleteCodeBehindFiles Remove="Drivers\**" />
 		<SpecFlowObsoleteCodeBehindFiles Remove="Support\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
 		<PackageReference Include="Selenium.WebDriver" Version="4.9.0" />
 		<PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
@@ -41,10 +51,6 @@
 		<PackageReference Include="nunit" Version="3.13.2" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
 		<PackageReference Include="FluentAssertions" Version="6.2.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Drivers\" />
 	</ItemGroup>
 
 </Project>

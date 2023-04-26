@@ -14,3 +14,4 @@
 _ReSharper.*
 bin
 packages
+/Nextzen.Enterprise.BDD/nuget.config
