@@ -16,7 +16,7 @@ jobs:
     - name: Restore NuGet packages
       run: dotnet restore
     - name: Build solution
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Debug
     - name: Create NuGet package
       run: dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))
     - name: Publish NuGet package
