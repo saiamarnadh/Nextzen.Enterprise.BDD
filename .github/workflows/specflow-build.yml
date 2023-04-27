@@ -18,7 +18,7 @@ jobs:
     - name: Build solution
       run: dotnet build --configuration Release
     - name: Create NuGet package
-      run: dotnet pack --configuration Release --no-build --output ${{github.workspace}}/nupkg
+      run: dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))
     - name: Publish NuGet package
       uses: actions/upload-artifact@v2
       with:
