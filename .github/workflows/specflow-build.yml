@@ -1,0 +1,26 @@
+name: SpecFlow Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1'
+    - name: Restore NuGet packages
+      run: dotnet restore
+    - name: Build solution
+      run: dotnet build --configuration Release
+    - name: Create NuGet package
+      run: dotnet pack --configuration Release --no-build --output ${{github.workspace}}/nupkg
+    - name: Publish NuGet package
+      uses: actions/upload-artifact@v2
+      with:
+        name: MyPackage
+        path: ${{github.workspace}}/nupkg/*.nupkg
