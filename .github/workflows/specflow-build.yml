@@ -20,19 +20,9 @@ jobs:
     
     - name: Build solution
       run: dotnet build --configuration Debug
-    
-    - name: Get Last Published Version
-      id: get_version
-      run: |
-        echo "::set-output name=version::$(dotnet nuget list source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease | grep Nextzen.Enterprise.BDD | awk '{print $2}')"
-    
-    - name: Increment Version Number
-      id: increment_version
-      run: |
-        echo "::set-output name=version::$(dotnet nuget add source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --username unused --password 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; dotnet nuget update source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --username unused --password ghp_rJNnAWHpygF2aWIknQWjZ3nw; dotnet nuget push c.*.nupkg -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --skip-duplicate)"
-        
+  
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=$VERSION
+      run: dotnet pack Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=$([System.DateTime]::Now.ToString("yyyy.MM.dd.HHmm&"))
       
     - name: Publish NuGet Package
       uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
