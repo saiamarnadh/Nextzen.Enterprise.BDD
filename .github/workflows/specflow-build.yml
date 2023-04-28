@@ -37,6 +37,5 @@ jobs:
     - name: Publish NuGet Package
       uses: JamesNK/Newtonsoft.Json-NuGet-Push@1.0.2
       with:
-        nuget-api-key: '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'
-        nuget-arguments: '--source https://nuget.pkg.github.com/saiamarnadh/index.json'
-        packages: './nupkg/*.nupkg'
+        api_key: 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
+        package_dir: './nupkg'
