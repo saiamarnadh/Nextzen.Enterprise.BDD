@@ -35,7 +35,9 @@ jobs:
       run: dotnet pack Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=$VERSION
       
     - name: Publish NuGet Package
-      uses: JamesNK/Newtonsoft.Json-NuGet-Push@1.0.2
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       with:
-        api_key: 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
-        package_dir: './nupkg'
+        nupkg-path:  './nupkg/*.nupkg'
+        repo-owner:  'saiamarnadh'
+        gh-user:  'saiamarnadhv@gmail.com'
+        token:  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
