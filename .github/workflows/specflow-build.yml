@@ -27,7 +27,7 @@ jobs:
     - name: Publish NuGet Package
       uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
       with:
-        nupkg-path:  '.Nextzen.Enterprise.BDD/nupkg/Nextzen.Enterprise.BDD.1.0.6.nupkg'
+        nupkg-path:  'nupkg/*.nupkg'
         repo-owner:  'saiamarnadh'
         gh-user:  'saiamarnadhv@gmail.com'
         token:  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
