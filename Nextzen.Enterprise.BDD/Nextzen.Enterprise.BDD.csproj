@@ -1,6 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -10,11 +8,10 @@
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
-
-
+	
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Authors>Nextzen</Authors>
 		<Company>Nextzen</Company>
 		<Description>A collection of Nuget Packages to enable automated validations on web, Desktop, Mobile and API applications</Description>
@@ -22,19 +19,13 @@
 		<DebugType>full</DebugType>
 		<PackageProjectUrl>https://github.com/saiamarnadh/Nextzen.Enterprise.BDD</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
-		<Version>1.0.4</Version>
+		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
 	</PropertyGroup>
 
-
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<Optimize>True</Optimize>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<PublishRelease>true</PublishRelease>
-		<OutputType>Library</OutputType>
-	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Drivers\**" />
 		<Compile Remove="Support\**" />
