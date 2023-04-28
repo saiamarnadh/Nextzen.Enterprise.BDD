@@ -22,7 +22,7 @@ jobs:
       run: dotnet build --configuration Debug
   
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.6
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.6
       
     - name: Publish NuGet Package
       uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
