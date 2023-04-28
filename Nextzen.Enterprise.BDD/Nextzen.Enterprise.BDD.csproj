@@ -1,18 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
-	<Target Name="NugetPackAutoVersioning" AfterTargets="Build">
-		<Exec Command="dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))" />
-	</Target>
-	
+
+
+
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
-
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
+
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -24,9 +22,19 @@
 		<DebugType>full</DebugType>
 		<PackageProjectUrl>https://github.com/saiamarnadh/Nextzen.Enterprise.BDD</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 	</PropertyGroup>
 
+
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PublishRelease>true</PublishRelease>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Drivers\**" />
 		<Compile Remove="Support\**" />
