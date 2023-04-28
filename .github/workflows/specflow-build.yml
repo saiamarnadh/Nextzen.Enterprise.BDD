@@ -35,8 +35,8 @@ jobs:
       run: dotnet pack Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=$VERSION
       
     - name: Publish NuGet Package
-      uses: push@v2
+      uses: nuget/push@v2
       with:
-        nuget-api-key: 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
+        nuget-api-key: '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'
         nuget-arguments: '--source https://nuget.pkg.github.com/saiamarnadh/index.json'
         packages: './nupkg/*.nupkg'
