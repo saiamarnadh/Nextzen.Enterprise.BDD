@@ -9,18 +9,34 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0'
+    
     - name: Restore NuGet packages
       run: dotnet restore
+    
     - name: Build solution
       run: dotnet build --configuration Debug
-    - name: Create NuGet package
-      run: dotnet pack -p:PackageVersion=$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))
-    - name: Publish NuGet package
-      uses: actions/upload-artifact@v2
+    
+    - name: Get Last Published Version
+      id: get_version
+      run: |
+        echo "::set-output name=version::$(dotnet nuget list source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease | grep Nextzen.Enterprise.BDD | awk '{print $2}')"
+    
+    - name: Increment Version Number
+      id: increment_version
+      run: |
+        echo "::set-output name=version::$(dotnet nuget add source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --username unused --password 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; dotnet nuget update source -n nuget.org -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --username unused --password ghp_rJNnAWHpygF2aWIknQWjZ3nw; dotnet nuget push c.*.nupkg -s https://nuget.pkg.github.com/saiamarnadh/index.json --prerelease --skip-duplicate)"
+        
+    - name: Pack
+      run: dotnet pack Nextzen.Enterprise.BDD.csproj --configuration Release --no-build --include-symbols --include-source --output ./nupkg /p:PackageVersion=$VERSION
+      
+    - name: Publish NuGet Package
+      uses: nuget/push@v2
       with:
-        name: MyPackage
-        path: ${{github.workspace}}/nupkg/*.nupkg
+        nuget-api-key: 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
+        nuget-arguments: '--source https://nuget.pkg.github.com/saiamarnadh/index.json'
+        packages: './nupkg/*.nupkg'
