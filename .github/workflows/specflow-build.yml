@@ -23,11 +23,10 @@ jobs:
   
     - name: Pack
       run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.6
-      
+   
+    - name: Add Nuget Source
+      run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/saiamarnadh/index.json" -username saiamarnadhv@gmail.com -Password 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
+    
     - name: Publish NuGet Package
-      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-      with:
-        nupkg-path:  'nupkg/Nextzen.Enterprise.BDD.1.0.6.nupkg'
-        repo-owner:  'saiamarnadh'
-        gh-user:  'saiamarnadhv@gmail.com'
-        token:  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
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.6.nupkg" --source "github"
+
