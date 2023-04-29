@@ -25,5 +25,5 @@ jobs:
       run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.9
     
     - name: Publish NuGet Package
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" --api-key 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 --source "https://nuget.pkg.github.com/saiamarnadh/index.json" --no-service-endpoint
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" --api-key ${{secrets.NPM_TOKEN}} --source "https://nuget.pkg.github.com/saiamarnadh/index.json" --no-service-endpoint
 
