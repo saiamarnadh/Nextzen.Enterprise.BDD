@@ -22,11 +22,8 @@ jobs:
       run: dotnet build --configuration Debug
   
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.6
-   
-    - name: Add Nuget Source
-      run: nuget sources Add -Name "github" -Source "https://nuget.pkg.github.com/saiamarnadh/index.json" -username saiamarnadhv@gmail.com -Password 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
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.7
     
     - name: Publish NuGet Package
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.6.nupkg" --source "github"
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.7.nupkg" --api-key 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 --source "https://nuget.pkg.github.com/saiamarnadh/index.json" --no-service-endpoint
 
