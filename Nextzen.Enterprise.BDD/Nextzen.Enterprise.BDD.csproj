@@ -18,6 +18,8 @@
 		<EnableNETAnalyzers>False</EnableNETAnalyzers>
 		<DebugType>full</DebugType>
 		<PackageProjectUrl>https://github.com/saiamarnadh/Nextzen.Enterprise.BDD</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/saiamarnadh/Nextzen.Enterprise.BDD</RepositoryUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<RepositoryType>git</RepositoryType>
 		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
 	</PropertyGroup>
