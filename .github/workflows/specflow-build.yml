@@ -27,4 +27,4 @@ jobs:
     - name: Push Package
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" --source https://nuget.pkg.github.com/saiamarnadh/index.json
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://nuget.pkg.github.com/saiamarnadh/index.json
