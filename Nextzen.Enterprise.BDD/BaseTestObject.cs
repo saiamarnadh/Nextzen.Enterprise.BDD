@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 
 namespace Nextzen.Enterprise.BDD
-{dnfbjfbejs
+{
     public abstract class BaseObject
     {
         public BaseObject(IConfiguration configuration, 
