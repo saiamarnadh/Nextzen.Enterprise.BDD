@@ -20,4 +20,5 @@ jobs:
     
     - name: Build solution
       run: dotnet build --configuration Debug
-        if [ $? -ne 0 ]; then exit 1; fi
+    
+    if: ${{ failure() }}
