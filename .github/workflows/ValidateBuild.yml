@@ -21,5 +21,6 @@ jobs:
     
     - name: Build solution
       run: dotnet build --configuration Debug
+      if: ${{ failure() }}
     
-    if: ${{ failure() }}
+    
