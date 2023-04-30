@@ -14,10 +14,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0'
-        source-url: https://nuget.pkg.github.com/saiamarnadh/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
-          
+        
     - name: Restore NuGet packages
       run: dotnet restore
     
@@ -28,5 +25,5 @@ jobs:
       run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.9
 
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" --skip-duplicate --no-symbols true
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.9.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols true
 
