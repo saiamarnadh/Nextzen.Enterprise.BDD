@@ -20,10 +20,13 @@ jobs:
     
     - name: Build solution
       run: dotnet build --configuration Debug
-  
+      
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.11
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=$NOW
 
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.$NOW.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
 
