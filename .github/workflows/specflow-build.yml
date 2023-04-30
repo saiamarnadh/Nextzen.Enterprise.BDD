@@ -27,7 +27,8 @@ jobs:
       id: version
     
     - name: Set package version
-      run: echo "::set-env name=PACKAGE_VERSION::${{ steps.version.outputs.datetime }}"
+      run: echo "PACKAGE_VERSION=${{ steps.version.outputs.datetime }}" >> $GITHUB_ENV
+
 
     - name: Pack
       run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=%PACKAGE_VERSION%
