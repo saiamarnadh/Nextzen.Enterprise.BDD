@@ -28,7 +28,9 @@ jobs:
     
     - name: Set package version
       run: echo "PACKAGE_VERSION=${{ steps.version.outputs.datetime }}" >> $GITHUB_ENV
-
+    
+    - name: Debug PACKAGE_VERSION
+      run: echo $PACKAGE_VERSION
 
     - name: Pack
       run: |
