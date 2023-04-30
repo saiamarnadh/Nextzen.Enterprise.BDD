@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 namespace Nextzen.Enterprise.BDD
 {
     public abstract class BaseObject
-    {hbhboijpnjmgvhgh
+    {
         public BaseObject(IConfiguration configuration, 
             ScenarioContext scenarioContext, 
             FeatureContext featureContext) {
