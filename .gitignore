@@ -13,5 +13,7 @@
 *.user
 _ReSharper.*
 bin
+obj/
+bin/
 packages
 /Nextzen.Enterprise.BDD/nuget.config
