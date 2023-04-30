@@ -41,7 +41,6 @@ jobs:
         $NEW_VERSION > Nextzen.Enterprise.BDD\Version.txt
         echo "::set-output name=VER::$NEW_VERSION"
     
-    
     - name: Pack
       run: |
         set "PACKAGE_VERSION=%PACKAGE_VERSION%"
@@ -49,4 +48,10 @@ jobs:
 
     - name: Push generated package to GitHub registry
       run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.${{ steps.version.outputs.VER }}.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
-
+    
+    - name: Commit changes
+      run: |
+        git config --global user.email "saiamarnadhv@gmail.com"
+        git config --global user.name "saiamarnadh"
+        git commit -a -m "Bump version"
+        git push
