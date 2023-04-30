@@ -31,7 +31,9 @@ jobs:
 
 
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=%PACKAGE_VERSION%
+      run: |
+        set "PACKAGE_VERSION=%PACKAGE_VERSION%"
+        dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=%PACKAGE_VERSION%
 
     - name: Push generated package to GitHub registry
       run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.%PACKAGE_VERSION%.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
