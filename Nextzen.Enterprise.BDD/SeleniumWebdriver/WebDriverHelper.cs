@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 
 namespace OpenQA.Selenium;
-
+blah blah blah
 public static class WebDriverHelper
 {
     public static bool highlightElements = true;
