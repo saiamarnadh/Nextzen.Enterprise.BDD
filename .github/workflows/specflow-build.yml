@@ -20,16 +20,15 @@ jobs:
     
     - name: Build solution
       run: dotnet build --configuration Debug
-      
-    - name: Create Version Number
-      id: versionnumber
+        
+    - name: Get current date
+      id: date
       run: |
-        echo "{versionnumber}={$(date +'%Y_%m_%d_%H_%M_%S')}" >> $GITHUB_STATE
-
+        echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
         
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=${{ env.versionnumber }}
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=${{ env.date }}
 
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.${{ env.versionnumber }}.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.${{ env.date }}.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
 
