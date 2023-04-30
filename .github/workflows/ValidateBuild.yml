@@ -1,0 +1,23 @@
+name: Validate Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0'
+        
+    - name: Restore NuGet packages
+      run: dotnet restore
+    
+    - name: Build solution
+      run: dotnet build --configuration Debug
+        if [ $? -ne 0 ]; then exit 1; fi
