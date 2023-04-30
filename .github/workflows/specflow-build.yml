@@ -30,7 +30,7 @@ jobs:
       shell: powershell
       id: version
       run: |
-        $VERSION = Get-Content -Path Nextzen.Enterprise.BDD\version.txt
+        $VERSION = Get-Content -Path .\version.txt
         $VERSION_PARTS = $VERSION.Split(".")
         $MAJOR = $VERSION_PARTS[0]
         $MINOR = $VERSION_PARTS[1]
@@ -38,7 +38,7 @@ jobs:
         # Increment the minor version for a minor change
         $MINOR++
         $NEW_VERSION = "$MAJOR.$MINOR.$PATCH"
-        (Get-Content -Path Nextzen.Enterprise.BDD\version.txt -Raw) -replace $VERSION,$NEW_VERSION | Set-Content -Path Nextzen.Enterprise.BDD\version.txt
+        (Get-Content -Path .\version.txt -Raw) -replace $VERSION,$NEW_VERSION | Set-Content -Path .\version.txt
         echo "::set-output name=VER::$NEW_VERSION"
     
     - name: Pack
