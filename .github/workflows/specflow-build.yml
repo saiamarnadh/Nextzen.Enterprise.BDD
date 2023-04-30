@@ -27,8 +27,8 @@ jobs:
         echo "DATETIME=$env:DATETIME" >> $GITHUB_ENV
           
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=${{ env.DATETIME }}
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion="${{ env.DATETIME }}"
 
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.${{ env.DATETIME }}.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD."${{ env.DATETIME }}".nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
 
