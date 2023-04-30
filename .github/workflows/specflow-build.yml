@@ -22,7 +22,7 @@ jobs:
       run: dotnet build --configuration Debug
       
     - name: Get current date and time
-      run: echo "::set-output name=datetime::$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')"
+      run: echo "::set-output name=datetime::$(Get-Date -Format 'yyyy.MM.dd.HH.mm.ss')"
       shell: powershell
       id: version
 
