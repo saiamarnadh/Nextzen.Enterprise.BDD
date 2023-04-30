@@ -22,8 +22,8 @@ jobs:
       run: dotnet build --configuration Debug
   
     - name: Pack
-      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.10
+      run: dotnet pack Nextzen.Enterprise.BDD/Nextzen.Enterprise.BDD.csproj --configuration Release --include-symbols --include-source --output ./nupkg /p:PackageVersion=1.0.11
 
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.1.0.10.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
+      run: dotnet nuget push "nupkg/Nextzen.Enterprise.BDD.*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "https://nuget.pkg.github.com/saiamarnadh/index.json" --skip-duplicate --no-symbols
 
